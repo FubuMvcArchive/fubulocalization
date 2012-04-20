@@ -12,7 +12,7 @@
     <description>Localization utilities</description>
     <tags>utilities, fubu</tags>
     <dependencies>
-      <dependency id="FubuCore" version="0.9.8.128" />
+      <dependency id="FubuCore" version="0.9.9.139" />
     </dependencies>
   </metadata>
   <files>
