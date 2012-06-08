@@ -9,6 +9,60 @@ namespace FubuLocalization.Tests
     public class StringTokenTester
     {
         [Test]
+        public void equals_is_namespace_aware()
+        {
+            var token1 = StringToken.FromKeyString("something");
+            var token2 = StringToken.FromKeyString("something");
+            var token3 = StringToken.FromKeyString("else");
+
+            // FakeToken is namespaced
+            var token4 = new FakeToken("something");
+            var token5 = new FakeToken("something");
+            var token6 = new FakeToken("else");
+
+            token1.ShouldEqual(token2);
+            token2.ShouldEqual(token1);
+            token3.ShouldNotEqual(token1);
+            token1.ShouldNotEqual(token3);
+
+            token4.ShouldEqual(token5);
+            token5.ShouldEqual(token4);
+            token6.ShouldNotEqual(token4);
+            token4.ShouldNotEqual(token6);
+
+            // Namespace matters here
+            token1.ShouldNotEqual(token4);
+            token3.ShouldNotEqual(token6);
+        }
+
+        [Test]
+        public void GetHashCode_depends_on_the_localization_key()
+        {
+            var token1 = StringToken.FromKeyString("something");
+            var token2 = StringToken.FromKeyString("something");
+            var token3 = StringToken.FromKeyString("else");
+
+            // FakeToken is namespaced
+            var token4 = new FakeToken("something");
+            var token5 = new FakeToken("something");
+            var token6 = new FakeToken("else");
+
+            token1.GetHashCode().ShouldEqual(token2.GetHashCode());
+            token2.GetHashCode().ShouldEqual(token1.GetHashCode());
+            token3.GetHashCode().ShouldNotEqual(token1.GetHashCode());
+            token1.GetHashCode().ShouldNotEqual(token3.GetHashCode());
+
+            token4.GetHashCode().ShouldEqual(token5.GetHashCode());
+            token5.GetHashCode().ShouldEqual(token4.GetHashCode());
+            token6.GetHashCode().ShouldNotEqual(token4.GetHashCode());
+            token4.GetHashCode().ShouldNotEqual(token6.GetHashCode());
+
+            // Namespace matters here
+            token1.GetHashCode().ShouldNotEqual(token4.GetHashCode());
+            token3.GetHashCode().ShouldNotEqual(token6.GetHashCode());
+        }
+
+        [Test]
         public void from_type_just_uses_type_name()
         {
             var token = StringToken.FromType<StringTokenTester>();
@@ -79,6 +133,13 @@ namespace FubuLocalization.Tests
         {
             const string key = "test";
             return StringToken.FromKeyString(key, "default");
+        }
+    }
+
+    public class FakeToken : StringToken
+    {
+        public FakeToken(string key) : base(key, null, namespaceByType:true)
+        {
         }
     }
 }

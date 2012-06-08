@@ -108,20 +108,25 @@ namespace FubuLocalization
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return Equals(obj._key, _key);
+
+            
+
+
+            return Equals(obj.ToLocalizationKey().ToString(), ToLocalizationKey().ToString());
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (StringToken)) return false;
-            return Equals((StringToken) obj);
+            if (obj is StringToken) return Equals((StringToken) obj);
+
+            return false;
         }
 
         public override int GetHashCode()
         {
-            return (_key != null ? _key.GetHashCode() : 0);
+            return ToLocalizationKey().ToString().GetHashCode();
         }
 
 
