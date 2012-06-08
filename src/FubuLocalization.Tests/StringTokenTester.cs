@@ -138,7 +138,7 @@ namespace FubuLocalization.Tests
 
     public class FakeToken : StringToken
     {
-        public FakeToken(string key) : base(key, null, namespaceByType:true)
+        public FakeToken(string key, string defaultValue = null) : base(key, defaultValue, namespaceByType:true)
         {
         }
     }

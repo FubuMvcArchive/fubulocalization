@@ -52,6 +52,18 @@ namespace FubuLocalization.Tests.Basic
             MockFor<ILocalizationStorage>().AssertWasCalled(x => x.WriteMissing("KEY1", "fr-FR_KEY1", cultureInfo));
         }
 
+        [Test]
+        public void find_missing_text_if_the_key_has_default_text_but_it_is_not_the_default_culture_for_a_token_with_namespace()
+        {
+            var token = new FakeToken("KEY1", "the default text");
+
+            var cultureInfo = new CultureInfo("fr-FR");
+            ClassUnderTest.FindMissingText(token, cultureInfo)
+                .ShouldEqual("fr-FR_FakeToken:KEY1");
+
+            MockFor<ILocalizationStorage>().AssertWasCalled(x => x.WriteMissing("FakeToken:KEY1", "fr-FR_FakeToken:KEY1", cultureInfo));
+        }
+
         private string findMissingProperty(Expression<Func<MissingHandlerTarget, object>> expression, CultureInfo culture)
         {
             var propertyInfo = ReflectionHelper.GetProperty(expression);

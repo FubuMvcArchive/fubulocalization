@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using FubuCore;
 
 namespace FubuLocalization
 {
@@ -52,7 +53,9 @@ namespace FubuLocalization
 
         public override string ToString()
         {
-            return _key1 + "-" + _key2;
+            return _key2.IsEmpty()
+                ? _key1
+                : _key1 + "-" + _key2;
         }
 
         public string Key1 { get { return _key1; } }

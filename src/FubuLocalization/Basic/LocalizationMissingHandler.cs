@@ -19,13 +19,13 @@ namespace FubuLocalization.Basic
 
         public string FindMissingText(StringToken key, CultureInfo culture)
         {
-            var defaultValue = culture.Name + "_" + key.Key;
+            var defaultValue = culture.Name + "_" + key.ToLocalizationKey();
             if (key.DefaultValue.IsNotEmpty() && culture.Equals(_defaultCulture))
             {
                 defaultValue = key.DefaultValue;
             }
 
-            _storage.WriteMissing(key.Key, defaultValue, culture);
+            _storage.WriteMissing(key.ToLocalizationKey().ToString(), defaultValue, culture);
 
             return defaultValue;
         }
