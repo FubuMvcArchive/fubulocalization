@@ -129,6 +129,28 @@ namespace FubuLocalization.Tests
                 .ShouldEqual(string.Empty);
         }
 
+        [Test]
+        public void should_implicitly_convert_to_string()
+        {
+            var mocks = new MockRepository();
+            var provider = mocks.StrictMock<ILocalizationDataProvider>();
+            var token = buildCommonToken();
+            const string retVal = "TheText";
+
+            LocalizationManager.Stub(provider);
+
+            using (mocks.Record())
+            {
+                Expect.Call(provider.GetTextForKey(token)).Return(retVal);
+            }
+
+            using (mocks.Playback())
+            {
+                string result = token;
+                result.ShouldEqual(retVal);
+            }
+        }
+
         private StringToken buildCommonToken()
         {
             const string key = "test";

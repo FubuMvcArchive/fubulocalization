@@ -129,6 +129,11 @@ namespace FubuLocalization
             return ToLocalizationKey().ToString().GetHashCode();
         }
 
+        public static implicit operator string(StringToken token)
+        {
+            return token.ToString();
+        }
+
 
         protected LocalizationKey buildKey()
         {
