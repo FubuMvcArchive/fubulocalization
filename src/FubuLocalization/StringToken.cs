@@ -146,5 +146,27 @@ namespace FubuLocalization
         {
             return _localizationKey.Value;
         }
+
+        public static StringToken Find(Type tokenType, string key)
+        {
+            var fields = tokenType.GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public)
+                .Where(x => x.FieldType.CanBeCastTo<StringToken>());
+
+            foreach (var fieldInfo in fields)
+            {
+                var token = fieldInfo.GetValue(null).As<StringToken>();
+                if (token.Key == key)
+                {
+                    return token;
+                }
+            }
+
+            return null;
+        }
+
+        public static StringToken Find<T>(string key) where T : StringToken
+        {
+            return Find(typeof (T), key);
+        }
     }
 }

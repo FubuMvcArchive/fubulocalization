@@ -134,6 +134,35 @@ namespace FubuLocalization.Tests
             const string key = "test";
             return StringToken.FromKeyString(key, "default");
         }
+
+        [Test]
+        public void find_by_type()
+        {
+            StringToken.Find(typeof (TargetKey), "One").ShouldBeTheSameAs(TargetKey.One);
+            StringToken.Find(typeof (TargetKey2), "One").ShouldBeTheSameAs(TargetKey2.One);
+        }
+
+    }
+
+    public class TargetKey : StringToken
+    {
+        public static readonly TargetKey One = new TargetKey("One");
+        public static readonly TargetKey Two = new TargetKey("Two");
+
+        protected TargetKey(string defaultValue) : base(null, defaultValue, namespaceByType:true)
+        {
+        }
+    }
+
+    public class TargetKey2 : StringToken
+    {
+        protected TargetKey2(string defaultValue)
+            : base(null, defaultValue, namespaceByType: true)
+        {
+        }
+
+        public static readonly TargetKey2 One = new TargetKey2("One");
+        public static readonly TargetKey2 Two = new TargetKey2("Two");
     }
 
     public class FakeToken : StringToken
