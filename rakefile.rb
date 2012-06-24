@@ -91,8 +91,7 @@ task :compile => [:clean, :restore_if_missing, :version] do
   MSBuildRunner.compile :compilemode => COMPILE_TARGET, :solutionfile => 'src/FubuLocalization.sln', :clrversion => CLR_TOOLS_VERSION
   copyOutputFiles "src/FubuLocalization/bin/#{COMPILE_TARGET}", "FubuLocalization*.{dll,pdb}", props[:stage]
   copyOutputFiles "src/localizer/bin/#{COMPILE_TARGET}", "localizer*.{exe,pdb}", props[:stage]   
-  copyOutputFiles "src/localizer/bin/#{COMPILE_TARGET}", "Microsoft.Practices.ServiceLocation.dll", props[:stage]   
-  copyOutputFiles "src/FubuTestingSupport/bin/#{COMPILE_TARGET}", "FubuTestingSupport*.{dll,pdb}", props[:stage]  
+  copyOutputFiles "src/localizer/bin/#{COMPILE_TARGET}", "FubuCore.dll", props[:stage]   
 end
 
 def copyOutputFiles(fromDir, filePattern, outDir)
