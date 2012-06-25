@@ -67,6 +67,11 @@ task :clean => [:update_buildsupport] do
     # work around nasty latency issue where folder still exists for a short while after it is removed
     waitfor { !exists?(props[:stage]) }
 	Dir.mkdir props[:stage]
+	
+	FileUtils.rm_rf props[:artifacts]
+    # work around nasty latency issue where folder still exists for a short while after it is removed
+    waitfor { !exists?(props[:artifacts]) }
+	Dir.mkdir props[:artifacts]
     
 	Dir.mkdir props[:artifacts] unless exists?(props[:artifacts])
 end
