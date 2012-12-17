@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FubuDocs">
-      <HintPath>..\..\buildsupport\FubuDocs\FubuDocs.dll</HintPath>
+    <Reference Include="FubuDocs, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FubuDocs.0.0.0.10\lib\net40\FubuDocs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,6 +54,7 @@
   <ItemGroup>
     <None Include="Architecture.spark" />
     <None Include="FubuLocalizationRoot.spark" />
+    <None Include="packages.config" />
     <None Include="pak-Config.zip" />
     <None Include="pak-Data.zip" />
     <None Include="pak-WebContent.zip" />
