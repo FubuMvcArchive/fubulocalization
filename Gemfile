@@ -1,7 +1,5 @@
-source 'http://rubygems.org'
-
-gem "rake", "~>10.0"
+source "http://rubygems.org"
 gem "bundler", ">=1.3.5"
+gem "rake", "~>10.0"
 gem "fuburake", "~>0.5"
-gem "ripple-cli", "~>2.0"
-gem "fubudocs", ">= 0.9.0.120"
+gem "ripple-cli"
