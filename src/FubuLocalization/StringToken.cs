@@ -84,6 +84,7 @@ namespace FubuLocalization
             return new StringToken(type.Name, type.Name);
         }
 
+        // SAMPLE: RenderingTokens
         public override string ToString()
         {
             return ToString(true);
@@ -103,6 +104,7 @@ namespace FubuLocalization
         {
             return string.Format(ToString(), args);
         }
+        // ENDSAMPLE
 
         public bool Equals(StringToken obj)
         {

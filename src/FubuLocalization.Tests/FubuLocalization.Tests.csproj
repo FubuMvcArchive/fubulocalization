@@ -72,6 +72,7 @@
     <Compile Include="LocalStringTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyTokenTester.cs" />
+    <Compile Include="ExampleKeys.cs" />
     <Compile Include="StringTokenTester.cs" />
     <Compile Include="StringTokenToLocalizationKeyTester.cs" />
     <Compile Include="ThreadSafeLocaleCacheTester.cs" />

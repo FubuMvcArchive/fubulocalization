@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
-      <Link>CommonAssemblyInfo.cs</Link>
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,5 +64,16 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="pak-Config.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".package-manifest" />
+    <None Include="1.intro.spark" />
+    <None Include="2.architecture.spark" />
+    <None Include="3.basic.spark" />
+    <None Include="index.spark" />
+    <None Include="ripple.dependencies.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="project.xml" />
   </ItemGroup>
 </Project>

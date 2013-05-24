@@ -36,4 +36,5 @@ spark.zip
 deployment/bottles/*.zip
 src/packages
 results/*
-
+Gemfile.lock
+logs

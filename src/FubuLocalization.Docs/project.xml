@@ -1,9 +1,16 @@
 <?xml version="1.0"?>
-<ProjectRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ProjectRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TagLine>Localization the Fubu way</TagLine>
   <Name>FubuLocalization</Name>
   <GitHubPage>http://github.com/DarthFubuMVC/FubuLocalization</GitHubPage>
   <UserGroupUrl>https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel</UserGroupUrl>
-  <BuildServerUrl>http://build.fubu-project.org/project.html?projectId=[CHANGEME]&amp;tab=projectOverview</BuildServerUrl>
+  <BuildServerUrl>http://build.fubu-project.org/project.html?projectId=project12&amp;tab=projectOverview</BuildServerUrl>
   <BottleName>FubuLocalization.Docs</BottleName>
+  <Nugets>
+    <PublishedNuget>
+      <Name>FubuLocalization</Name>
+      <Description>Localization utilities</Description>
+    </PublishedNuget>
+  </Nugets>
   <Url>fubulocalization</Url>
 </ProjectRoot>

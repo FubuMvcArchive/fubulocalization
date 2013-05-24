@@ -1,0 +1,22 @@
+<!--Title: Architecture-->
+
+<markdown>
+
+  <Section title="LocalizationManager" id="manager">
+    
+  </Section>
+
+  <Section title="ILocalizationDataProvider" id="provider">
+
+  </Section>
+
+  <Section title="ILocalizationMissingHandler" id="missing">
+
+  </Section>
+
+  <Section title="ILocalizationStorage" id="storage">
+
+  </Section>
+  
+</markdown>
+
