@@ -47,6 +47,19 @@
 
   <p>The <code>LocalizationManager</code> class uses the key of the <code>StringToken</code> to lookup the appropriate value, falling back to the <code>Default Value</code> if the key is not found. We'll discuss how to
   implement and register custom strategies for finding values in another topic.
-</p>
+  </p>
+
+  <Section title="Conventional key usage" id="conventional-keys">
+    <br/>
+    <p>The <code>StringToken</code> class has a static method called <code>FromKeyString</code>. This method is used to create instances of the
+    <code>StringToken</code> class during runtime. The follow is an example of its usage:</p>
+  </Section>
+  
+  <Snippet name="FromKeyStringUsage" />
+  
+  <p>The two overloads make it possible to generate tokens based on metadata. Consider a scenario where you have templates in your application. These
+  templates can be registered through plugins and are all gathered through your IoC container. You would like to provide a localizable header for each template type:</p>
+  
+  <Snippet name="ConventionalKeyUsage" />
   
 </markdown>

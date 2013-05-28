@@ -1,0 +1,4 @@
+﻿<fubu-localization>
+  <string key="SubNavigationKeys:FileValidation">File Validation</string>
+  <string key="SubNavigationKeys:Reports">Reports</string>
+</fubu-localization>

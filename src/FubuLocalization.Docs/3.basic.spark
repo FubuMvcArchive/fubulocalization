@@ -2,16 +2,27 @@
 
 <markdown>
 
-  <Section title="Sensible defaults" id="defaults">
-    
-  </Section>
-
   <Section title="Locale configs" id="configs">
-    
+    <br/>
+    <p>The default implementation of the <code>ILocalizationStorage</code> interface is the <code>XmlDirectoryLocalizationStorage</code> class. This class leverages "locale files"
+    to persist localization values. The locale files are xml files with the following naming convention: <code>&lt;culture&gt;.locale.config</code>. The following is a sample:</p>
   </Section>
 
+  <EmbedFile name="english-keys.txt" />
+  
   <Section title="Missing keys" id="missing">
-    
+    <br/>
+    <p>Using the default XML implementation, any missing keys are written to a file called <code>missing.locale.config</code>. To override values, simply remove them from the missing.locale.config file
+    and add the desired values in the corresponding locale file (e.g., en-US.locale.config). The following is an example:</p>
+  </Section>
+  
+  <EmbedFile name="missing-keys.txt" />
+  
+  <p>There is a tool bundled in the <code>FubuLocalization</code> nuget called <code>localizer.exe</code>. It has preliminary support for merging the missing and locale files and will be documented at a later date.</p>
+  
+  <Section title="FubuMVC Support" id="fubumvc">
+  <br/>
+  <p>If you're using FubuMVC, checkout the <code>FubuMVC.Localization</code> nuget. It bootstraps <code>FubuLocalization</code> with the default implementations described here and ties it into all of the built-in HTML conventions.</p>
   </Section>
   
 </markdown>

@@ -1,0 +1,3 @@
+﻿<missing-localization>
+  <missing key="SomeKey" culture="en-US">Something</missing>
+</missing-localization>

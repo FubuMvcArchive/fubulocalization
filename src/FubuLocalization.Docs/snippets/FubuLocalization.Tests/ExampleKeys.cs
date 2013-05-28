@@ -1,4 +1,7 @@
-﻿namespace FubuLocalization.Tests
+﻿using System;
+using FubuCore;
+
+namespace FubuLocalization.Tests
 {
     // SAMPLE: ExampleKeys
     
@@ -29,4 +32,34 @@
     }
 
     // ENDSAMPLE
+
+    public class ConventionalKeyUsage
+    {
+        // SAMPLE: FromKeyStringUsage
+        public static void GenerateTheToken()
+        {
+            var tokenWithNoDefaultValue = StringToken.FromKeyString("Literally any string imaginable");
+            var tokenWithDefaultValue = StringToken.FromKeyString("Some:Namespaced:Key", "The default value");
+        }
+        // ENDSAMPLE
+
+        public interface ICustomTemplate { }
+
+        // SAMPLE: ConventionalKeyUsage
+        public static StringToken TemplateHeader<T>()
+            where T : ICustomTemplate
+        {
+            var templateType = typeof (T);
+            var defaultValue = breakUpPascalCasing(templateType.Name);
+            var tokenKey = "Template:{0}:Header".ToFormat(templateType.FullName);
+
+            return StringToken.FromKeyString(tokenKey, defaultValue);
+        }
+        // ENDSAMPLE
+
+        private static string breakUpPascalCasing(string value)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
