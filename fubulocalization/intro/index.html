@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+    <title>
+      Introduction | FubuLocalization
+    </title><meta charset="utf-8" />
+<meta content="FubuWorld" name="description" />
+<meta content="FubuWorld" name="author" />
+
+
+
+<link type="text/css" rel="stylesheet" href="/fubulocalization/_content/styles/sons-of-obsidian.css" />
+<link type="text/css" rel="stylesheet" href="/fubulocalization/_content/styles/toastr.css" />
+<link type="text/css" rel="stylesheet" href="/fubulocalization/_content/styles/twitter/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="/fubulocalization/_content/styles/twitter/bootstrap-responsive.min.css" />
+<link type="text/css" rel="stylesheet" href="/fubulocalization/_content/styles/toastr-responsive.css" />
+<link type="text/css" rel="stylesheet" href="/fubulocalization/_content/styles/fubuworld.core.css" />
+
+<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" media="screen" />
+  </head>
+  <body data-target=".bs-docs-sidebar" data-spy="scroll">
+    <div class="container">
+      
+      
+
+<div class="row">
+  <div class="span6">
+    <p class="logo">
+      <a title="Fubu" href="/fubulocalization/topics"><span>Fubu</span></a>
+      <a class="project-logo" title="Localization the Fubu way" href="/fubulocalization/fubulocalization"><span>FubuLocalization</span></a>
+    </p>
+  </div>
+  <div class="span6">
+    <div class="top-header text-right">
+      <em>
+        <em><a href="https://groups.google.com/forum/?fromgroups#%21forum/fubumvc-devel">Join our vibrant mailing list</a></em>
+      </em>
+      <div class="social">
+        <a class="ico-github" href="http://github.com/DarthFubuMVC/FubuLocalization"><img src="/fubulocalization/_content/images/github-icon.png" alt="Github" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="navbar" id="nav-follow">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav"><li><a data-key="index" href="/fubulocalization/fubulocalization">FubuLocalization »</a></li><li class="active"><a data-key="intro" href="/fubulocalization/fubulocalization/intro">Introduction »</a></li></ul>
+<ul style="float:right" class="nav"><li><a title="FubuLocalization" href="/fubulocalization/fubulocalization">Previous</a></li><li><a title="Architecture" href="/fubulocalization/fubulocalization/architecture">Next</a></li></ul>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        
+
+        <div class="row">
+          <div class="span3 sidebar">
+            <h3 class="half-margin">Topics</h3>
+            <ul class="nav nav-tabs nav-stacked affix-top" id="page-toc">
+            <li><a href="#undefined">The StringToken class</a></li><li><a href="#undefined">Using namespaces</a></li><li><a href="#undefined">Rendering tokens</a></li><li><a href="#undefined">Conventional key usage</a></li></ul>
+            <br />
+            <h3 class="no-margin">Next</h3>
+<p><a data-key="architecture" href="/fubulocalization/fubulocalization/architecture">Architecture</a></p>
+<h3 class="no-margin">Previous</h3>
+<p><a data-key="index" href="/fubulocalization/fubulocalization">FubuLocalization</a></p>
+          </div>
+          <div class="span9">
+            <h1 class="no-margin">Introduction</h1><hr class="header-line" />
+             <!--Title: Introduction-->  <p>FubuLocalization's API is relatively simple. You either a) use explicit placeholders for text that you want localized or b) conventionally define "keys" to point to the text you want to use.</p>
+
+<p></p><section><h4 class="section-header" id="stringtokens">The StringToken class</h4>
+    <br />
+    <p>At its simplest definition, a StringToken is simply a key/value pair. More specifically, it's a combination of a <code>key</code>
+    and the <code>default value</code> for that <code>key</code>. Let's take a look at some code:
+    </p>
+    </section><p></p>
+
+  <pre class="prettyprint lang-cs linenums:7 prettyprinted" data-linenums="7" style=""><ol class="linenums"><li value="7" class="L6"><span class="pln"> </span></li><li class="L7"><span class="pln">    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ExampleKeys</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="typ">StringToken</span></li><li class="L8"><span class="pln">    </span><span class="pun">{</span></li><li class="L9"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">readonly</span><span class="pln"> </span><span class="typ">ExampleKeys</span><span class="pln"> </span><span class="typ">InvalidFormat</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ExampleKeys</span><span class="pun">(</span><span class="str">"Data is formatted incorrectly"</span><span class="pun">);</span></li><li class="L0"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">readonly</span><span class="pln"> </span><span class="typ">ExampleKeys</span><span class="pln"> </span><span class="typ">Required</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ExampleKeys</span><span class="pun">(</span><span class="str">"Required Field"</span><span class="pun">);</span></li><li class="L1"><span class="pln"> </span></li><li class="L2"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">ExampleKeys</span><span class="pun">(</span><span class="kwd">string</span><span class="pln"> text</span><span class="pun">)</span></li><li class="L3"><span class="pln">            </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">base</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">,</span><span class="pln"> text</span><span class="pun">)</span></li><li class="L4"><span class="pln">        </span><span class="pun">{</span></li><li class="L5"><span class="pln">        </span><span class="pun">}</span></li><li class="L6"><span class="pln">    </span><span class="pun">}</span></li><li class="L7"><span class="pln"> </span></li></ol></pre>
+
+  <p>In this particular example we have two tokens: InvalidFormat and Required. The <code>StringToken</code> class is smart enough
+  to generate the <code>key</code> for us based on the field name. Therefore, the keys are "InvalidFormat" and "Required", respectively. The string
+  that is passed into the constructor of our <code>ExampleKeys</code> class is the <code>default value</code> of the token. So, we have created key/value pairs
+  of "InvalidFormat:Data is formatted incorrectly" and "Required:Required Field".
+  </p>
+
+  <p>Let's touch briefly touch on namespacing and then we'll discuss how render <code>StringTokens</code>.
+</p>
+
+<p></p><section><h4 class="section-header" id="namespacing">Using namespaces</h4>
+    <br />
+    <p>
+      Using default keys works well for simple scenarios. However, as your usage of <code>StringTokens</code> increases, you'll quickly duplicate your keys. For this reason,
+      there is an option to <code>namespace</code> your keys by <code>type</code> (your custom class).
+    </p>
+</section><p></p>
+
+  <pre class="prettyprint lang-cs linenums:22 prettyprinted" data-linenums="22" style=""><ol class="linenums"><li value="22" class="L1"><span class="pln"> </span></li><li class="L2"><span class="pln">    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ExampleNamespacing</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="typ">StringToken</span></li><li class="L3"><span class="pln">    </span><span class="pun">{</span></li><li class="L4"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">readonly</span><span class="pln"> </span><span class="typ">ExampleNamespacing</span><span class="pln"> </span><span class="typ">One</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ExampleNamespacing</span><span class="pun">(</span><span class="str">"One"</span><span class="pun">);</span></li><li class="L5"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">readonly</span><span class="pln"> </span><span class="typ">ExampleNamespacing</span><span class="pln"> </span><span class="typ">Two</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ExampleNamespacing</span><span class="pun">(</span><span class="str">"Two"</span><span class="pun">);</span></li><li class="L6"><span class="pln"> </span></li><li class="L7"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">ExampleNamespacing</span><span class="pun">(</span><span class="kwd">string</span><span class="pln"> text</span><span class="pun">)</span></li><li class="L8"><span class="pln">            </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">base</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">,</span><span class="pln"> text</span><span class="pun">,</span><span class="pln"> namespaceByType</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">)</span></li><li class="L9"><span class="pln">        </span><span class="pun">{</span></li><li class="L0"><span class="pln">        </span><span class="pun">}</span></li><li class="L1"><span class="pln">    </span><span class="pun">}</span></li><li class="L2"><span class="pln"> </span></li></ol></pre>
+
+  <p>By providing the <code>namespaceByType: true</code> parameter to the base constructor, we are telling the <code>StringToken</code> class to use the name of our class as a
+    prefix for our keys. In this case, our keys will be: "ExampleNamespacing:One" and "ExampleNamespacing:Two".
+  </p>
+
+<p></p><section><h4 class="section-header" id="rendering">Rendering tokens</h4>
+    <br />
+    <p>To render a <code>StringToken</code> you just need to call <code>ToString()</code>. The <code>StringToken</code> class overrides the <code>ToString</code> method and invokes the <code>LocalizationManager</code> class,
+    as demonstrated here:
+  </p></section><p></p>
+
+  <pre class="prettyprint lang-cs linenums:88 prettyprinted" data-linenums="88" style=""><ol class="linenums"><li value="88" class="L7"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">override</span><span class="pln"> </span><span class="kwd">string</span><span class="pln"> </span><span class="typ">ToString</span><span class="pun">()</span></li><li class="L8"><span class="pln">        </span><span class="pun">{</span></li><li class="L9"><span class="pln">            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">ToString</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span></li><li class="L0"><span class="pln">        </span><span class="pun">}</span></li><li class="L1"><span class="pln"> </span></li><li class="L2"><span class="pln">        </span><span class="com">/// &lt;summary&gt;</span></li><li class="L3"><span class="pln">        </span><span class="com">///   Conditionally render the string based on a condition. Convenient if you want to avoid a bunch of messy script tags in the views.</span></li><li class="L4"><span class="pln">        </span><span class="com">/// &lt;/summary&gt;</span></li><li class="L5"><span class="pln">        </span><span class="com">/// &lt;param name = "condition"&gt;&lt;/param&gt;</span></li><li class="L6"><span class="pln">        </span><span class="com">/// &lt;returns&gt;&lt;/returns&gt;</span></li><li class="L7"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">string</span><span class="pln"> </span><span class="typ">ToString</span><span class="pun">(</span><span class="pln">bool condition</span><span class="pun">)</span></li><li class="L8"><span class="pln">        </span><span class="pun">{</span></li><li class="L9"><span class="pln">            </span><span class="kwd">return</span><span class="pln"> condition </span><span class="pun">?</span><span class="pln"> </span><span class="typ">LocalizationManager</span><span class="pun">.</span><span class="typ">GetTextForKey</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">)</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">.</span><span class="typ">Empty</span><span class="pun">;</span></li><li class="L0"><span class="pln">        </span><span class="pun">}</span></li><li class="L1"><span class="pln"> </span></li><li class="L2"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">string</span><span class="pln"> </span><span class="typ">ToFormat</span><span class="pun">(</span><span class="kwd">params</span><span class="pln"> </span><span class="kwd">object</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span></li><li class="L3"><span class="pln">        </span><span class="pun">{</span></li><li class="L4"><span class="pln">            </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">.</span><span class="typ">Format</span><span class="pun">(</span><span class="typ">ToString</span><span class="pun">(),</span><span class="pln"> args</span><span class="pun">);</span></li><li class="L5"><span class="pln">        </span><span class="pun">}</span></li></ol></pre>
+
+  <p>The <code>LocalizationManager</code> class uses the key of the <code>StringToken</code> to lookup the appropriate value, falling back to the <code>Default Value</code> if the key is not found. We'll discuss how to
+  implement and register custom strategies for finding values in another topic.
+  </p>
+
+<p></p><section><h4 class="section-header" id="conventional-keys">Conventional key usage</h4>
+    <br />
+    <p>The <code>StringToken</code> class has a static method called <code>FromKeyString</code>. This method is used to create instances of the
+    <code>StringToken</code> class during runtime. The follow is an example of its usage:</p></section><p></p>
+
+  <pre class="prettyprint lang-cs linenums:39 prettyprinted" data-linenums="39" style=""><ol class="linenums"><li value="39" class="L8"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> </span><span class="typ">GenerateTheToken</span><span class="pun">()</span></li><li class="L9"><span class="pln">        </span><span class="pun">{</span></li><li class="L0"><span class="pln">            </span><span class="kwd">var</span><span class="pln"> tokenWithNoDefaultValue </span><span class="pun">=</span><span class="pln"> </span><span class="typ">StringToken</span><span class="pun">.</span><span class="typ">FromKeyString</span><span class="pun">(</span><span class="str">"Literally any string imaginable"</span><span class="pun">);</span></li><li class="L1"><span class="pln">            </span><span class="kwd">var</span><span class="pln"> tokenWithDefaultValue </span><span class="pun">=</span><span class="pln"> </span><span class="typ">StringToken</span><span class="pun">.</span><span class="typ">FromKeyString</span><span class="pun">(</span><span class="str">"Some:Namespaced:Key"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"The default value"</span><span class="pun">);</span></li><li class="L2"><span class="pln">        </span><span class="pun">}</span></li></ol></pre>
+
+  <p>The two overloads make it possible to generate tokens based on metadata. Consider a scenario where you have templates in your application. These
+  templates can be registered through plugins and are all gathered through your IoC container. You would like to provide a localizable header for each template type:</p>
+
+  <pre class="prettyprint lang-cs linenums:49 prettyprinted" data-linenums="49" style=""><ol class="linenums"><li value="49" class="L8"><span class="pln">        </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">StringToken</span><span class="pln"> </span><span class="typ">TemplateHeader</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;()</span></li><li class="L9"><span class="pln">            </span><span class="kwd">where</span><span class="pln"> T </span><span class="pun">:</span><span class="pln"> </span><span class="typ">ICustomTemplate</span></li><li class="L0"><span class="pln">        </span><span class="pun">{</span></li><li class="L1"><span class="pln">            </span><span class="kwd">var</span><span class="pln"> templateType </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">typeof</span><span class="pln"> </span><span class="pun">(</span><span class="pln">T</span><span class="pun">);</span></li><li class="L2"><span class="pln">            </span><span class="kwd">var</span><span class="pln"> defaultValue </span><span class="pun">=</span><span class="pln"> breakUpPascalCasing</span><span class="pun">(</span><span class="pln">templateType</span><span class="pun">.</span><span class="typ">Name</span><span class="pun">);</span></li><li class="L3"><span class="pln">            </span><span class="kwd">var</span><span class="pln"> tokenKey </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Template:{0}:Header"</span><span class="pun">.</span><span class="typ">ToFormat</span><span class="pun">(</span><span class="pln">templateType</span><span class="pun">.</span><span class="typ">FullName</span><span class="pun">);</span></li><li class="L4"><span class="pln"> </span></li><li class="L5"><span class="pln">            </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">StringToken</span><span class="pun">.</span><span class="typ">FromKeyString</span><span class="pun">(</span><span class="pln">tokenKey</span><span class="pun">,</span><span class="pln"> defaultValue</span><span class="pun">);</span></li><li class="L6"><span class="pln">        </span><span class="pun">}</span></li></ol></pre>
+
+            </div>
+        </div>
+      </div>
+    </div>
+    <script src="/fubulocalization/_content/scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="/fubulocalization/_content/scripts/prettify.js" type="text/javascript"></script>
+<script src="/fubulocalization/_content/scripts/bootstrap-prettify.js" type="text/javascript"></script>
+<script src="/fubulocalization/_content/scripts/fubuworld.js" type="text/javascript"></script>
+<script src="/fubulocalization/_content/scripts/toastr.js" type="text/javascript"></script>
+<script src="/fubulocalization/_content/scripts/twitter/bootstrap.min.js" type="text/javascript"></script>
+<script src="/fubulocalization/_content/scripts/fubudocs-tools.js" type="text/javascript"></script>
+<script src="/fubulocalization/_content/scripts/twitter/bootstrap-affix.js" type="text/javascript"></script>
+<script src="/fubulocalization/_content/scripts/topics.js" type="text/javascript"></script>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>
+      Powered by <a href="http://github.com/DarthFubuMVC/FubuWorld">FubuDocs</a>.
+    </p>
+    <p>
+      Code licensed under the <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a>.
+    </p>
+  </div>
+</footer>
+  
+</body></html>
