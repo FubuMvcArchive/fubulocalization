@@ -15,7 +15,16 @@ namespace FubuLocalization
         public ThreadSafeLocaleCache(CultureInfo culture, IEnumerable<LocalString> strings)
         {
             _data = new Dictionary<LocalizationKey, string>();
-            strings.Each(s => _data.Add(new LocalizationKey(s.value), s.display));
+            strings.Each(s =>
+            {
+				var localizationKey = new LocalizationKey(s.value);
+				if (_data.ContainsKey(localizationKey))
+				{
+					throw new ArgumentException("Could not add localization key '{0}' to the cache as it already exists.".ToFormat(s.value));
+				}
+				
+				_data.Add(localizationKey, s.display);
+            });
 
             _culture = culture;
         }
