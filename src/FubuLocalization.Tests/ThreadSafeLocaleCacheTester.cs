@@ -57,5 +57,19 @@ namespace FubuLocalization.Tests
             })
             .ShouldEqual("d1");
         }
+
+		[Test]
+		public void initializing_via_localstrings_with_duplicate_keys_should_throw()
+		{
+			const string duplicatedkey = "duplicatedkey";
+			var localStrings = new[]
+            {
+                new LocalString(duplicatedkey, "a1"),
+                new LocalString(duplicatedkey, "a2")
+            };
+
+			typeof (ArgumentException).ShouldBeThrownBy(() => { new ThreadSafeLocaleCache(new CultureInfo("en-US"), localStrings); }).Message.ShouldContain(duplicatedkey);
+		}
+
     }
 }
