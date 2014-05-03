@@ -11,7 +11,6 @@ namespace FubuLocalization
     public class StringToken
     {
         private readonly string _defaultValue;
-        private readonly string _localizationNamespace;
         private string _key;
         private readonly Lazy<LocalizationKey> _localizationKey;
 
@@ -40,9 +39,7 @@ namespace FubuLocalization
         {
             _key = key;
             _defaultValue = defaultValue;
-            _localizationNamespace = localizationNamespace ?? (namespaceByType ? GetType().Name : null);
-
-            _localizationKey = new Lazy<LocalizationKey>(buildKey);
+            _localizationKey = new Lazy<LocalizationKey>(() => buildKey(GetType(), localizationNamespace, namespaceByType));
         }
 
         public string Key
@@ -111,9 +108,6 @@ namespace FubuLocalization
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
 
-            
-
-
             return Equals(obj.ToLocalizationKey().ToString(), ToLocalizationKey().ToString());
         }
 
@@ -136,17 +130,30 @@ namespace FubuLocalization
             return token.ToString();
         }
 
-
-        protected LocalizationKey buildKey()
+        protected virtual LocalizationKey buildKey(Type type, string localizationNamespace, bool namespaceByType)
         {
+            var localizationNs = localizationNamespace ?? (namespaceByType ? string.Join(".", GetTypeHierarchy(type).Select(x => x.Name)) : null);
             if (_key == null)
             {
-                fillKeysOnFields(GetType());
+                fillKeysOnFields(type);
             }
 
-            return _localizationNamespace.IsNotEmpty() 
-                ? new LocalizationKey(_localizationNamespace + ":" + _key) 
+            return localizationNs.IsNotEmpty()
+                ? new LocalizationKey(localizationNs + ":" + _key) 
                 : new LocalizationKey(_key);
+        }
+
+        private static IEnumerable<Type> GetTypeHierarchy(Type type)
+        {
+            var types = new List<Type> { type };
+            while (type.DeclaringType != null)
+            {
+                types.Add(type.DeclaringType);
+                type = type.DeclaringType;
+            }
+
+            types.Reverse();
+            return types;
         }
 
         public LocalizationKey ToLocalizationKey()
