@@ -75,6 +75,7 @@
     <Compile Include="ExampleKeys.cs" />
     <Compile Include="StringTokenTester.cs" />
     <Compile Include="StringTokenToLocalizationKeyTester.cs" />
+    <Compile Include="StringTokenStronglyTypedTester.cs" />
     <Compile Include="ThreadSafeLocaleCacheTester.cs" />
     <Compile Include="XmlDirectoryLocalizationStorageTester.cs" />
   </ItemGroup>
