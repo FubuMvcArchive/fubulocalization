@@ -9,7 +9,7 @@ using System.Web.UI;
 
 namespace FubuLocalization
 {
-    public class StringToken<T, TParams> : StringToken<T>
+    public class StringToken<T, TParams> : StringToken<T>, IStringTokenWithParams
     {
         public StringToken(string defaultValue) : base(defaultValue)
         {
@@ -160,5 +160,6 @@ namespace FubuLocalization
                 End
             }
         }
+
     }
 }

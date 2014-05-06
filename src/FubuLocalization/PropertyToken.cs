@@ -121,7 +121,7 @@ namespace FubuLocalization
         }
         
         // SAMPLE: PropertyTokenKey
-        public string StringTokenKey
+        public virtual string StringTokenKey
         {
             get
             {
