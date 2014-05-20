@@ -53,6 +53,7 @@
     <Compile Include="Basic\LocalizationCache.cs" />
     <Compile Include="Basic\LocalizationMissingHandler.cs" />
     <Compile Include="Basic\LocalizationProviderFactory.cs" />
+    <Compile Include="IStringTokenWithParams.cs" />
     <Compile Include="StringToken`2.cs" />
     <Compile Include="CurrentCultureContext.cs" />
     <Compile Include="HeaderTextAttribute.cs" />
